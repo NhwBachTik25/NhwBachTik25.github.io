@@ -1,0 +1,1798 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Phùng Nguyễn Như Bách | Founder PinkByte – CV Portfolio</title>
+  <meta name="description" content="Portfolio của Phùng Nguyễn Như Bách – Founder PinkByte. Chuyên gia AI, lập trình viên trẻ với nhiều giải thưởng Quốc gia và Quốc tế." />
+
+  <!-- ======================== GOOGLE FONTS ======================== -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&family=Inter:wght@300;400;500;600;700&family=Orbitron:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
+
+  <style>
+    /* ================================================================
+       0. CSS CUSTOM PROPERTIES (DESIGN TOKENS)
+       ================================================================ */
+    :root {
+      --bg-primary:    #0f0a18;
+      --bg-secondary:  #180e29;
+      --bg-tertiary:   #120c20;
+      --bg-card:       rgba(30, 18, 52, 0.65);
+      --bg-glass:      rgba(226, 40, 126, 0.06);
+
+      --pink:          #e2287e;
+      --pink-glow:     rgba(226, 40, 126, 0.45);
+      --pink-light:    #ff5eab;
+      --gold:          #ffd700;
+      --gold-glow:     rgba(255, 215, 0, 0.35);
+      --orange:        #ff8800;
+      --orange-glow:   rgba(255, 136, 0, 0.35);
+      --cyan:          #00e5ff;
+      --cyan-glow:     rgba(0, 229, 255, 0.25);
+
+      --text-primary:  #f0e6ff;
+      --text-secondary:#b8a9d4;
+      --text-muted:    #7a6a96;
+      --border-glow:   rgba(226, 40, 126, 0.25);
+
+      --font-heading:  'Orbitron', 'Montserrat', sans-serif;
+      --font-body:     'Inter', 'Montserrat', sans-serif;
+
+      --section-padding: 100px 0;
+      --container-width: 1140px;
+      --radius:        16px;
+      --radius-sm:     10px;
+      --transition:    0.35s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    /* ================================================================
+       1. RESET & BASE
+       ================================================================ */
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+    html { scroll-behavior: smooth; font-size: 16px; }
+
+    body {
+      font-family: var(--font-body);
+      background: var(--bg-primary);
+      color: var(--text-primary);
+      line-height: 1.7;
+      overflow-x: hidden;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    ::selection { background: var(--pink); color: #fff; }
+
+    a { color: var(--pink-light); text-decoration: none; transition: var(--transition); }
+    a:hover { color: var(--gold); }
+    img { max-width: 100%; height: auto; display: block; }
+
+    .container {
+      width: 90%;
+      max-width: var(--container-width);
+      margin: 0 auto;
+    }
+
+    /* ================================================================
+       2. ANIMATED BACKGROUND (CANVAS + BLOBS)
+       ================================================================ */
+    #bg-canvas {
+      position: fixed;
+      inset: 0;
+      z-index: 0;
+      pointer-events: none;
+    }
+
+    body::before,
+    body::after {
+      content: '';
+      position: fixed;
+      border-radius: 50%;
+      pointer-events: none;
+      z-index: 0;
+      filter: blur(120px);
+    }
+    body::before {
+      width: 600px; height: 600px;
+      background: var(--pink-glow);
+      top: -150px; left: -100px;
+      animation: floatBlob 18s ease-in-out infinite alternate;
+    }
+    body::after {
+      width: 500px; height: 500px;
+      background: var(--orange-glow);
+      bottom: -100px; right: -80px;
+      animation: floatBlob 22s ease-in-out infinite alternate-reverse;
+    }
+
+    @keyframes floatBlob {
+      0%   { transform: translate(0, 0) scale(1); }
+      50%  { transform: translate(60px, 40px) scale(1.15); }
+      100% { transform: translate(-30px, 70px) scale(0.95); }
+    }
+
+    /* ================================================================
+       3. NAVIGATION
+       ================================================================ */
+    .navbar {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 1000;
+      padding: 16px 0;
+      background: rgba(15, 10, 24, 0.6);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border-bottom: 1px solid var(--border-glow);
+      transition: var(--transition);
+    }
+    .navbar.scrolled {
+      padding: 10px 0;
+      background: rgba(15, 10, 24, 0.92);
+    }
+    .navbar .container {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .nav-logo {
+      font-family: var(--font-heading);
+      font-size: 1.15rem;
+      font-weight: 800;
+      background: linear-gradient(135deg, var(--pink), var(--gold));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      letter-spacing: 2px;
+    }
+    .nav-links {
+      display: flex;
+      gap: 32px;
+      list-style: none;
+    }
+    .nav-links a {
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: var(--text-secondary);
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+      position: relative;
+      padding-bottom: 4px;
+    }
+    .nav-links a::after {
+      content: '';
+      position: absolute;
+      bottom: 0; left: 0;
+      width: 0; height: 2px;
+      background: var(--pink);
+      box-shadow: 0 0 8px var(--pink-glow);
+      transition: width var(--transition);
+    }
+    .nav-links a:hover::after,
+    .nav-links a.active::after { width: 100%; }
+    .nav-links a:hover { color: var(--text-primary); }
+
+    /* Hamburger */
+    .nav-toggle {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      cursor: pointer;
+      background: none;
+      border: none;
+      padding: 4px;
+    }
+    .nav-toggle span {
+      display: block;
+      width: 26px; height: 2.5px;
+      background: var(--pink);
+      border-radius: 2px;
+      transition: var(--transition);
+    }
+    .nav-toggle.open span:nth-child(1) { transform: rotate(45deg) translate(5px, 5px); }
+    .nav-toggle.open span:nth-child(2) { opacity: 0; }
+    .nav-toggle.open span:nth-child(3) { transform: rotate(-45deg) translate(5px, -5px); }
+
+    /* ================================================================
+       4. HERO SECTION
+       ================================================================ */
+    .hero {
+      position: relative;
+      z-index: 1;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      padding: 120px 0 80px;
+      overflow: hidden;
+    }
+
+    /* Scanline overlay */
+    .hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: repeating-linear-gradient(
+        0deg,
+        transparent, transparent 2px,
+        rgba(226, 40, 126, 0.015) 2px,
+        rgba(226, 40, 126, 0.015) 4px
+      );
+      pointer-events: none;
+      z-index: 1;
+    }
+
+    .hero .container {
+      position: relative;
+      z-index: 2;
+      display: flex;
+      align-items: center;
+      gap: 60px;
+    }
+
+    .hero-text { flex: 1; }
+
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 8px 18px;
+      background: rgba(226, 40, 126, 0.12);
+      border: 1px solid var(--border-glow);
+      border-radius: 50px;
+      font-size: 0.82rem;
+      font-weight: 600;
+      color: var(--pink-light);
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      margin-bottom: 20px;
+      animation: fadeInUp 0.8s ease-out;
+    }
+    .hero-badge .dot {
+      width: 8px; height: 8px;
+      background: var(--pink);
+      border-radius: 50%;
+      box-shadow: 0 0 10px var(--pink);
+      animation: pulse 1.5s ease-in-out infinite;
+    }
+
+    @keyframes pulse {
+      0%, 100% { opacity: 1; transform: scale(1); }
+      50%      { opacity: 0.5; transform: scale(1.3); }
+    }
+
+    .hero-name {
+      font-family: var(--font-heading);
+      font-size: clamp(2rem, 5vw, 3.4rem);
+      font-weight: 900;
+      line-height: 1.15;
+      margin-bottom: 8px;
+      animation: fadeInUp 0.8s ease-out 0.15s both;
+    }
+    .hero-name .highlight {
+      background: linear-gradient(135deg, var(--pink), var(--gold));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .hero-title-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 10px 28px;
+      background: linear-gradient(135deg, var(--pink), #a01a5a);
+      color: #fff;
+      border: none;
+      border-radius: 50px;
+      font-family: var(--font-heading);
+      font-size: clamp(0.8rem, 1.5vw, 1rem);
+      font-weight: 700;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      box-shadow: 0 4px 30px var(--pink-glow), inset 0 1px 0 rgba(255,255,255,0.15);
+      cursor: default;
+      margin-bottom: 16px;
+      animation: fadeInUp 0.8s ease-out 0.3s both;
+      text-shadow: 0 1px 3px rgba(0,0,0,0.3);
+    }
+    .hero-title-btn .icon-bolt {
+      font-size: 1.1em;
+    }
+
+    .hero-slogan {
+      font-size: 1.1rem;
+      color: var(--text-secondary);
+      margin-bottom: 32px;
+      max-width: 480px;
+      font-style: italic;
+      position: relative;
+      padding-left: 20px;
+      border-left: 3px solid var(--pink);
+      animation: fadeInUp 0.8s ease-out 0.45s both;
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
+      animation: fadeInUp 0.8s ease-out 0.6s both;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 12px 28px;
+      border-radius: 50px;
+      font-family: var(--font-body);
+      font-size: 0.9rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: var(--transition);
+      border: none;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+    .btn-primary {
+      background: linear-gradient(135deg, var(--pink), #a01a5a);
+      color: #fff;
+      box-shadow: 0 4px 25px var(--pink-glow);
+    }
+    .btn-primary:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 8px 35px var(--pink-glow);
+      color: #fff;
+    }
+    .btn-outline {
+      background: transparent;
+      color: var(--text-primary);
+      border: 1.5px solid var(--border-glow);
+    }
+    .btn-outline:hover {
+      border-color: var(--pink);
+      background: rgba(226, 40, 126, 0.08);
+      transform: translateY(-3px);
+      color: var(--pink-light);
+    }
+    .btn-gold {
+      background: linear-gradient(135deg, var(--gold), var(--orange));
+      color: #1a0a00;
+      font-weight: 700;
+      box-shadow: 0 4px 25px var(--gold-glow);
+    }
+    .btn-gold:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 8px 35px var(--gold-glow);
+      color: #1a0a00;
+    }
+
+    .social-links {
+      display: flex;
+      gap: 12px;
+      margin-top: 24px;
+      animation: fadeInUp 0.8s ease-out 0.75s both;
+    }
+    .social-link {
+      width: 46px; height: 46px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 50%;
+      background: var(--bg-card);
+      border: 1px solid var(--border-glow);
+      color: var(--text-secondary);
+      font-size: 1.1rem;
+      transition: var(--transition);
+    }
+    .social-link:hover {
+      border-color: var(--pink);
+      color: var(--pink);
+      box-shadow: 0 0 20px var(--pink-glow);
+      transform: translateY(-3px);
+    }
+    .social-link svg { width: 20px; height: 20px; fill: currentColor; }
+
+    /* ---- Avatar ---- */
+    .hero-avatar {
+      flex-shrink: 0;
+      position: relative;
+      animation: fadeInUp 1s ease-out 0.3s both;
+    }
+    .avatar-wrapper {
+      position: relative;
+      width: 320px; height: 320px;
+    }
+    .avatar-wrapper::before {
+      content: '';
+      position: absolute;
+      inset: -12px;
+      border-radius: 50%;
+      background: conic-gradient(from 0deg, var(--pink), var(--gold), var(--orange), var(--cyan), var(--pink));
+      animation: spinGlow 6s linear infinite;
+      opacity: 0.6;
+      filter: blur(4px);
+    }
+    @keyframes spinGlow { to { transform: rotate(360deg); } }
+
+    .avatar-wrapper::after {
+      content: '';
+      position: absolute;
+      inset: -6px;
+      border-radius: 50%;
+      background: var(--bg-primary);
+    }
+    .avatar-img {
+      position: relative;
+      z-index: 2;
+      width: 100%; height: 100%;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 3px solid var(--bg-primary);
+      /* ====== THAY ẢNH ĐẠI DIỆN TẠI ĐÂY ====== */
+      background: linear-gradient(135deg, var(--bg-secondary), #2a1545);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+    }
+    .avatar-img img {
+      width: 100%; height: 100%;
+      object-fit: cover;
+      border-radius: 50%;
+    }
+    .avatar-placeholder {
+      font-family: var(--font-heading);
+      font-size: 4rem;
+      font-weight: 900;
+      background: linear-gradient(135deg, var(--pink), var(--gold));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .avatar-particles span {
+      position: absolute;
+      z-index: 3;
+      width: 6px; height: 6px;
+      background: var(--pink);
+      border-radius: 50%;
+      box-shadow: 0 0 10px var(--pink);
+      animation: orbitParticle 4s linear infinite;
+    }
+    .avatar-particles span:nth-child(2) {
+      background: var(--gold);
+      box-shadow: 0 0 10px var(--gold);
+      animation-delay: -1s;
+      animation-duration: 5s;
+    }
+    .avatar-particles span:nth-child(3) {
+      background: var(--orange);
+      box-shadow: 0 0 10px var(--orange);
+      animation-delay: -2s;
+      animation-duration: 6s;
+      width: 5px; height: 5px;
+    }
+    .avatar-particles span:nth-child(4) {
+      background: var(--cyan);
+      box-shadow: 0 0 10px var(--cyan);
+      animation-delay: -3s;
+      animation-duration: 7s;
+      width: 4px; height: 4px;
+    }
+    @keyframes orbitParticle {
+      0%   { transform: rotate(0deg) translateX(170px) rotate(0deg); }
+      100% { transform: rotate(360deg) translateX(170px) rotate(-360deg); }
+    }
+
+    /* ================================================================
+       5. SECTION UTILITIES
+       ================================================================ */
+    .section { position: relative; z-index: 1; padding: var(--section-padding); }
+
+    .section-header { text-align: center; margin-bottom: 64px; }
+
+    .section-label {
+      font-family: var(--font-heading);
+      font-size: 0.8rem;
+      font-weight: 700;
+      color: var(--pink);
+      text-transform: uppercase;
+      letter-spacing: 4px;
+      margin-bottom: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 12px;
+    }
+    .section-label::before,
+    .section-label::after {
+      content: '';
+      width: 40px; height: 1px;
+      background: linear-gradient(90deg, transparent, var(--pink));
+    }
+    .section-label::after {
+      background: linear-gradient(90deg, var(--pink), transparent);
+    }
+    .section-title {
+      font-family: var(--font-heading);
+      font-size: clamp(1.6rem, 3.5vw, 2.4rem);
+      font-weight: 800;
+      line-height: 1.2;
+    }
+    .section-title .glow {
+      color: var(--gold);
+      text-shadow: 0 0 30px var(--gold-glow);
+    }
+    .section-subtitle {
+      color: var(--text-secondary);
+      font-size: 0.95rem;
+      margin-top: 12px;
+      max-width: 600px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    /* ================================================================
+       6. STATS BAR
+       ================================================================ */
+    .stats-bar { position: relative; z-index: 1; padding: 40px 0; }
+
+    .stats-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 24px;
+    }
+    .stat-card {
+      text-align: center;
+      padding: 28px 16px;
+      background: var(--bg-card);
+      border: 1px solid var(--border-glow);
+      border-radius: var(--radius);
+      backdrop-filter: blur(16px);
+      transition: var(--transition);
+    }
+    .stat-card:hover {
+      border-color: var(--pink);
+      box-shadow: 0 0 30px var(--pink-glow);
+      transform: translateY(-4px);
+    }
+    .stat-number {
+      font-family: var(--font-heading);
+      font-size: 2.2rem;
+      font-weight: 800;
+      background: linear-gradient(135deg, var(--pink), var(--gold));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    .stat-label {
+      font-size: 0.85rem;
+      color: var(--text-secondary);
+      margin-top: 4px;
+      font-weight: 500;
+    }
+
+    /* ================================================================
+       7. ACHIEVEMENTS – GOLDEN BOARD (Cards Grid)
+       ================================================================ */
+    .achievements {
+      background: var(--bg-secondary);
+    }
+
+    /* Trophy tiers filter */
+    .trophy-filters {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 10px;
+      margin-bottom: 48px;
+    }
+    .trophy-filter {
+      padding: 8px 22px;
+      border-radius: 50px;
+      font-size: 0.82rem;
+      font-weight: 600;
+      cursor: pointer;
+      border: 1px solid var(--border-glow);
+      background: var(--bg-card);
+      color: var(--text-secondary);
+      transition: var(--transition);
+      backdrop-filter: blur(10px);
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+    .trophy-filter.active,
+    .trophy-filter:hover {
+      border-color: var(--pink);
+      background: rgba(226, 40, 126, 0.15);
+      color: var(--pink-light);
+      box-shadow: 0 0 15px var(--pink-glow);
+    }
+
+    /* Cards grid */
+    .achievements-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+      gap: 24px;
+    }
+
+    .achievement-card {
+      position: relative;
+      background: var(--bg-card);
+      border: 1px solid var(--border-glow);
+      border-radius: var(--radius);
+      padding: 28px 24px;
+      backdrop-filter: blur(16px);
+      transition: var(--transition);
+      overflow: hidden;
+      opacity: 0;
+      transform: translateY(30px);
+    }
+    .achievement-card.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* Mouse-follow glow */
+    .achievement-card::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(circle at var(--mx, 50%) var(--my, 50%), rgba(226,40,126,0.12), transparent 60%);
+      opacity: 0;
+      transition: opacity 0.4s;
+      pointer-events: none;
+    }
+    .achievement-card:hover::before { opacity: 1; }
+    .achievement-card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 12px 40px rgba(226, 40, 126, 0.15);
+    }
+
+    /* Tier-specific border glow on hover */
+    .achievement-card[data-tier="champion"]:hover {
+      border-color: var(--gold);
+      box-shadow: 0 12px 40px var(--gold-glow);
+    }
+    .achievement-card[data-tier="champion"]::before {
+      background: radial-gradient(circle at var(--mx, 50%) var(--my, 50%), rgba(255,215,0,0.15), transparent 60%);
+    }
+    .achievement-card[data-tier="silver"]:hover {
+      border-color: #c0c0c0;
+      box-shadow: 0 12px 40px rgba(192,192,192,0.2);
+    }
+    .achievement-card[data-tier="bronze"]:hover {
+      border-color: var(--orange);
+      box-shadow: 0 12px 40px var(--orange-glow);
+    }
+
+    /* Champion cards get a gold left border */
+    .achievement-card[data-tier="champion"] {
+      border-left: 3px solid var(--gold);
+    }
+    .achievement-card[data-tier="silver"] {
+      border-left: 3px solid #c0c0c0;
+    }
+    .achievement-card[data-tier="bronze"] {
+      border-left: 3px solid var(--orange);
+    }
+    .achievement-card[data-tier="merit"] {
+      border-left: 3px solid var(--cyan);
+    }
+
+    .card-header {
+      display: flex;
+      align-items: flex-start;
+      gap: 14px;
+      margin-bottom: 14px;
+    }
+    .card-rank-icon {
+      font-size: 2rem;
+      line-height: 1;
+      flex-shrink: 0;
+    }
+    .card-rank-badge {
+      display: inline-block;
+      padding: 4px 14px;
+      border-radius: 50px;
+      font-size: 0.72rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      margin-bottom: 6px;
+    }
+    .badge-champion {
+      background: linear-gradient(135deg, rgba(255,215,0,0.2), rgba(255,215,0,0.05));
+      color: var(--gold);
+      border: 1px solid rgba(255,215,0,0.35);
+    }
+    .badge-silver {
+      background: linear-gradient(135deg, rgba(192,192,192,0.2), rgba(192,192,192,0.05));
+      color: #d4d4d4;
+      border: 1px solid rgba(192,192,192,0.3);
+    }
+    .badge-bronze {
+      background: linear-gradient(135deg, rgba(255,136,0,0.2), rgba(255,136,0,0.05));
+      color: var(--orange);
+      border: 1px solid rgba(255,136,0,0.3);
+    }
+    .badge-merit {
+      background: linear-gradient(135deg, rgba(0,229,255,0.15), rgba(0,229,255,0.03));
+      color: var(--cyan);
+      border: 1px solid rgba(0,229,255,0.25);
+    }
+
+    .card-title {
+      font-family: var(--font-heading);
+      font-size: 0.88rem;
+      font-weight: 700;
+      color: var(--text-primary);
+      line-height: 1.45;
+      margin-bottom: 8px;
+    }
+    .card-desc {
+      font-size: 0.83rem;
+      color: var(--text-secondary);
+      line-height: 1.55;
+    }
+    .card-year {
+      display: inline-block;
+      margin-top: 12px;
+      font-family: var(--font-heading);
+      font-size: 0.7rem;
+      color: var(--text-muted);
+      letter-spacing: 2px;
+      padding: 3px 12px;
+      border-radius: 50px;
+      background: rgba(255,255,255,0.04);
+      border: 1px solid rgba(255,255,255,0.06);
+    }
+
+    /* Counter badge at top-right corner */
+    .card-number {
+      position: absolute;
+      top: 14px; right: 16px;
+      font-family: var(--font-heading);
+      font-size: 0.7rem;
+      font-weight: 700;
+      color: var(--text-muted);
+      opacity: 0.4;
+      letter-spacing: 1px;
+    }
+
+    /* ================================================================
+       8. ABOUT ME / SKILLS SECTION
+       ================================================================ */
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 48px;
+      align-items: start;
+    }
+    .about-text p {
+      color: var(--text-secondary);
+      margin-bottom: 16px;
+      font-size: 0.95rem;
+    }
+    .about-text strong {
+      color: var(--text-primary);
+    }
+
+    .skills-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 20px;
+    }
+    .skill-tag {
+      padding: 8px 18px;
+      border-radius: 50px;
+      font-size: 0.82rem;
+      font-weight: 600;
+      background: rgba(226, 40, 126, 0.08);
+      border: 1px solid var(--border-glow);
+      color: var(--pink-light);
+      transition: var(--transition);
+    }
+    .skill-tag:hover {
+      background: rgba(226, 40, 126, 0.2);
+      border-color: var(--pink);
+      box-shadow: 0 0 15px var(--pink-glow);
+      transform: translateY(-2px);
+    }
+
+    .tech-meters {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+    .meter-label {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 8px;
+      font-size: 0.88rem;
+      font-weight: 600;
+    }
+    .meter-label span:last-child {
+      color: var(--pink-light);
+      font-family: var(--font-heading);
+      font-size: 0.8rem;
+    }
+    .meter-bar {
+      height: 8px;
+      background: rgba(226, 40, 126, 0.1);
+      border-radius: 10px;
+      overflow: hidden;
+    }
+    .meter-fill {
+      height: 100%;
+      border-radius: 10px;
+      background: linear-gradient(90deg, var(--pink), var(--orange), var(--gold));
+      box-shadow: 0 0 12px var(--pink-glow);
+      width: 0;
+      transition: width 1.2s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    /* ================================================================
+       9. CONTACT SECTION
+       ================================================================ */
+    .contact { background: var(--bg-secondary); }
+
+    .contact-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 24px;
+    }
+    .contact-card {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      padding: 24px;
+      background: var(--bg-card);
+      border: 1px solid var(--border-glow);
+      border-radius: var(--radius);
+      backdrop-filter: blur(16px);
+      transition: var(--transition);
+      color: var(--text-primary);
+    }
+    .contact-card:hover {
+      border-color: var(--pink);
+      box-shadow: 0 0 30px var(--pink-glow);
+      transform: translateY(-4px);
+      color: var(--text-primary);
+    }
+    .contact-icon {
+      width: 52px; height: 52px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 50%;
+      background: rgba(226, 40, 126, 0.1);
+      border: 1px solid var(--border-glow);
+      flex-shrink: 0;
+      transition: var(--transition);
+    }
+    .contact-card:hover .contact-icon {
+      background: rgba(226, 40, 126, 0.2);
+      border-color: var(--pink);
+      box-shadow: 0 0 15px var(--pink-glow);
+    }
+    .contact-icon svg {
+      width: 22px; height: 22px;
+      fill: var(--pink-light);
+    }
+    .contact-info h4 {
+      font-size: 0.88rem;
+      font-weight: 700;
+      color: var(--text-primary);
+      margin-bottom: 2px;
+    }
+    .contact-info p {
+      font-size: 0.82rem;
+      color: var(--text-secondary);
+    }
+
+    /* ================================================================
+       10. FOOTER
+       ================================================================ */
+    .footer {
+      position: relative;
+      z-index: 1;
+      padding: 40px 0;
+      text-align: center;
+      border-top: 1px solid var(--border-glow);
+    }
+    .footer-brand {
+      font-family: var(--font-heading);
+      font-size: 1rem;
+      font-weight: 700;
+      background: linear-gradient(135deg, var(--pink), var(--gold));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      margin-bottom: 8px;
+    }
+    .footer p {
+      font-size: 0.8rem;
+      color: var(--text-muted);
+    }
+    .footer-socials {
+      display: flex;
+      justify-content: center;
+      gap: 14px;
+      margin-top: 16px;
+    }
+    .footer-socials a {
+      width: 38px; height: 38px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 50%;
+      background: var(--bg-card);
+      border: 1px solid var(--border-glow);
+      color: var(--text-muted);
+      transition: var(--transition);
+    }
+    .footer-socials a:hover {
+      border-color: var(--pink);
+      color: var(--pink);
+      box-shadow: 0 0 15px var(--pink-glow);
+    }
+    .footer-socials svg { width: 16px; height: 16px; fill: currentColor; }
+
+    /* ================================================================
+       11. ANIMATIONS
+       ================================================================ */
+    @keyframes fadeInUp {
+      from { opacity: 0; transform: translateY(30px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    .reveal {
+      opacity: 0;
+      transform: translateY(30px);
+      transition: opacity 0.7s ease-out, transform 0.7s ease-out;
+    }
+    .reveal.visible { opacity: 1; transform: translateY(0); }
+
+    /* Glitch – text-shadow based (safe for Vietnamese diacritics & line breaks) */
+    .glitch {
+      position: relative;
+      animation: glitchShadow 4s ease-in-out infinite;
+    }
+    @keyframes glitchShadow {
+      0%, 85%, 100% {
+        text-shadow: none;
+      }
+      86% {
+        text-shadow: -2px -1px 0 rgba(255, 94, 171, 0.35),
+                      2px 1px 0 rgba(0, 229, 255, 0.35);
+      }
+      88% {
+        text-shadow: 2px 2px 0 rgba(255, 94, 171, 0.35),
+                     -1px -2px 0 rgba(0, 229, 255, 0.35);
+      }
+      90% {
+        text-shadow: -1px 2px 0 rgba(255, 136, 0, 0.3),
+                      1px -1px 0 rgba(226, 40, 126, 0.35);
+      }
+      92% {
+        text-shadow: none;
+      }
+    }
+
+    .typing-cursor {
+      display: inline-block;
+      width: 3px;
+      height: 1em;
+      background: var(--pink);
+      margin-left: 4px;
+      animation: blink 1s step-end infinite;
+      vertical-align: text-bottom;
+    }
+    @keyframes blink {
+      0%, 100% { opacity: 1; }
+      50%      { opacity: 0; }
+    }
+
+    /* ================================================================
+       12. SCROLL TO TOP
+       ================================================================ */
+    .scroll-top {
+      position: fixed;
+      bottom: 30px; right: 30px;
+      width: 48px; height: 48px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--pink), #a01a5a);
+      color: #fff;
+      border: none;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 999;
+      opacity: 0;
+      transform: translateY(20px);
+      transition: var(--transition);
+      box-shadow: 0 4px 25px var(--pink-glow);
+    }
+    .scroll-top.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    .scroll-top:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 8px 35px var(--pink-glow);
+    }
+
+    /* ================================================================
+       13. RESPONSIVE
+       ================================================================ */
+    @media (max-width: 900px) {
+      .hero .container {
+        flex-direction: column-reverse;
+        text-align: center;
+      }
+      .hero-text { text-align: center; }
+      .hero-slogan { margin: 0 auto 32px; text-align: left; }
+      .hero-actions { justify-content: center; }
+      .social-links { justify-content: center; }
+      .avatar-wrapper { width: 240px; height: 240px; }
+      .avatar-particles span { animation-name: orbitParticleMobile; }
+      @keyframes orbitParticleMobile {
+        0%   { transform: rotate(0deg) translateX(130px) rotate(0deg); }
+        100% { transform: rotate(360deg) translateX(130px) rotate(-360deg); }
+      }
+      .stats-grid { grid-template-columns: repeat(2, 1fr); }
+      .about-grid { grid-template-columns: 1fr; }
+      .achievements-grid { grid-template-columns: 1fr; }
+    }
+
+    @media (max-width: 768px) {
+      .nav-links {
+        display: none;
+        position: absolute;
+        top: 100%; left: 0; right: 0;
+        flex-direction: column;
+        background: rgba(15, 10, 24, 0.96);
+        backdrop-filter: blur(20px);
+        padding: 24px;
+        gap: 20px;
+        border-bottom: 1px solid var(--border-glow);
+      }
+      .nav-links.active { display: flex; }
+      .nav-links a { text-align: center; }
+      .nav-toggle { display: flex; }
+    }
+
+    @media (max-width: 480px) {
+      .stats-grid { grid-template-columns: 1fr; }
+      .hero-name { font-size: 1.8rem; }
+      .avatar-wrapper { width: 200px; height: 200px; }
+      .achievements-grid { grid-template-columns: 1fr; }
+      .trophy-filters { gap: 6px; }
+      .trophy-filter { padding: 6px 14px; font-size: 0.75rem; }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- ======================== CANVAS BG ======================== -->
+  <canvas id="bg-canvas"></canvas>
+
+  <!-- ======================== NAVIGATION ======================== -->
+  <nav class="navbar" id="navbar">
+    <div class="container">
+      <a href="#" class="nav-logo">PINK BYTE</a>
+      <ul class="nav-links" id="navLinks">
+        <li><a href="#hero" class="active">Trang Chủ</a></li>
+        <li><a href="#about">Giới Thiệu</a></li>
+        <li><a href="#achievements">Thành Tựu</a></li>
+        <li><a href="#contact">Liên Hệ</a></li>
+      </ul>
+      <button class="nav-toggle" id="navToggle" aria-label="Mở menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- ======================== HERO ======================== -->
+  <section class="hero" id="hero">
+    <div class="container">
+      <div class="hero-text">
+        <div class="hero-badge">
+          <span class="dot"></span> Founder & AI Developer
+        </div>
+
+        <h1 class="hero-name glitch" data-text="PHÙNG NGUYỄN NHƯ BÁCH">
+          <span class="highlight">PHÙNG NGUYỄN</span><br />NHƯ BÁCH
+        </h1>
+
+        <!-- Nút Founder PinkByte nổi bật -->
+        <div class="hero-title-btn">
+          <span class="icon-bolt">⚡</span> Founder PinkByte
+        </div>
+
+        <p class="hero-slogan">
+          "Luyện trí thông minh – Khởi xướng công nghệ"<span class="typing-cursor"></span>
+        </p>
+
+        <div class="hero-actions">
+          <!-- ====== THAY LINK TẢI CV TẠI ĐÂY ====== -->
+          <a href="#contact" class="btn btn-primary">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+            Tải CV
+          </a>
+          <a href="#achievements" class="btn btn-gold">🏆 Bảng Vàng Thành Tích</a>
+        </div>
+
+        <div class="social-links">
+          <!-- ====== LINK MẠNG XÃ HỘI ====== -->
+          <a href="https://www.facebook.com/phung.nguyen.nhu.bach" target="_blank" class="social-link" title="Facebook">
+            <svg viewBox="0 0 24 24"><path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"/></svg>
+          </a>
+          <a href="https://github.com/NhwBachTik25" target="_blank" class="social-link" title="GitHub">
+            <svg viewBox="0 0 24 24"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
+          </a>
+          <a href="mailto:nhubach.tik25@gmail.com" class="social-link" title="Email">
+            <svg viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z" fill="none" stroke="currentColor" stroke-width="1.5"/><polyline points="22,6 12,13 2,6" fill="none" stroke="currentColor" stroke-width="1.5"/></svg>
+          </a>
+          <a href="tel:0916947239" class="social-link" title="Điện thoại">
+            <svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z" fill="none" stroke="currentColor" stroke-width="1.5"/></svg>
+          </a>
+        </div>
+      </div>
+
+      <div class="hero-avatar">
+        <div class="avatar-wrapper">
+          <div class="avatar-img">
+            <!-- ====== THAY ẢNH ĐẠI DIỆN: đổi src bên dưới ====== -->
+            <img src="avatar.jpg" alt="Phùng Nguyễn Như Bách" />
+          </div>
+          <div class="avatar-particles">
+            <span></span><span></span><span></span><span></span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ======================== STATS ======================== -->
+  <section class="stats-bar">
+    <div class="container">
+      <div class="stats-grid">
+        <div class="stat-card reveal">
+          <div class="stat-number" data-target="14">0</div>
+          <div class="stat-label">Giải thưởng đạt được</div>
+        </div>
+        <div class="stat-card reveal">
+          <div class="stat-number" data-target="3">0</div>
+          <div class="stat-label">Hạng Nhất / Vô Địch</div>
+        </div>
+        <div class="stat-card reveal">
+          <div class="stat-number" data-target="2">0</div>
+          <div class="stat-label">Năm kinh nghiệm AI</div>
+        </div>
+        <div class="stat-card reveal">
+          <div class="stat-number" data-target="1">0</div>
+          <div class="stat-label">Startup sáng lập</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ======================== ABOUT ======================== -->
+  <section class="section" id="about">
+    <div class="container">
+      <div class="section-header reveal">
+        <div class="section-label">Giới Thiệu</div>
+        <h2 class="section-title">Về <span class="glow">Như Bách</span></h2>
+      </div>
+      <div class="about-grid">
+        <div class="about-text reveal">
+          <p>
+            Xin chào! Mình là <strong>Phùng Nguyễn Như Bách</strong> – một lập trình viên trẻ đam mê Trí tuệ Nhân tạo (AI) và Khoa học Máy tính. Hiện tại mình là <strong>Founder của PinkByte</strong>, nơi mình theo đuổi sứ mệnh ứng dụng AI để giải quyết các bài toán thực tế.
+          </p>
+          <p>
+            Với nền tảng vững chắc từ các cuộc thi Olympic và AI toàn quốc, mình không ngừng rèn luyện tư duy thuật toán, kỹ năng giải quyết vấn đề, và khả năng xây dựng các hệ thống AI end-to-end. Mình đã đạt <strong>14 giải thưởng</strong> từ cấp tỉnh đến toàn quốc và quốc tế.
+          </p>
+          <p>
+            Mục tiêu của mình: tạo ra những sản phẩm công nghệ có giá trị, đóng góp vào cộng đồng AI Việt Nam và vươn tầm quốc tế.
+          </p>
+          <div class="skills-list">
+            <span class="skill-tag">Python</span>
+            <span class="skill-tag">Machine Learning</span>
+            <span class="skill-tag">Deep Learning</span>
+            <span class="skill-tag">Computer Vision</span>
+            <span class="skill-tag">NLP</span>
+            <span class="skill-tag">PyTorch</span>
+            <span class="skill-tag">TensorFlow</span>
+            <span class="skill-tag">C/C++</span>
+            <span class="skill-tag">Algorithms</span>
+            <span class="skill-tag">Web Dev</span>
+          </div>
+        </div>
+        <div class="tech-meters reveal">
+          <div class="meter">
+            <div class="meter-label"><span>Artificial Intelligence</span><span>95%</span></div>
+            <div class="meter-bar"><div class="meter-fill" data-width="95"></div></div>
+          </div>
+          <div class="meter">
+            <div class="meter-label"><span>Competitive Programming</span><span>88%</span></div>
+            <div class="meter-bar"><div class="meter-fill" data-width="88"></div></div>
+          </div>
+          <div class="meter">
+            <div class="meter-label"><span>Machine Learning / Deep Learning</span><span>92%</span></div>
+            <div class="meter-bar"><div class="meter-fill" data-width="92"></div></div>
+          </div>
+          <div class="meter">
+            <div class="meter-label"><span>Computer Vision</span><span>90%</span></div>
+            <div class="meter-bar"><div class="meter-fill" data-width="90"></div></div>
+          </div>
+          <div class="meter">
+            <div class="meter-label"><span>Web Development</span><span>78%</span></div>
+            <div class="meter-bar"><div class="meter-fill" data-width="78"></div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ======================== ACHIEVEMENTS – BẢNG VÀNG ======================== -->
+  <section class="section achievements" id="achievements">
+    <div class="container">
+      <div class="section-header reveal">
+        <div class="section-label">🏆 Vinh Danh</div>
+        <h2 class="section-title">Bảng Vàng <span class="glow">Thành Tích</span></h2>
+        <p class="section-subtitle">14 giải thưởng từ cấp Tỉnh, Khu vực, Toàn quốc đến Quốc tế trong lĩnh vực AI & Lập trình</p>
+      </div>
+
+      <!-- Filter buttons -->
+      <div class="trophy-filters reveal">
+        <button class="trophy-filter active" data-filter="all">Tất cả (14)</button>
+        <button class="trophy-filter" data-filter="champion">🏆 Vô Địch / Nhất</button>
+        <button class="trophy-filter" data-filter="silver">🥈 Nhì / Bạc</button>
+        <button class="trophy-filter" data-filter="bronze">🥉 Ba / Đồng</button>
+        <button class="trophy-filter" data-filter="merit">⭐ Khuyến Khích</button>
+      </div>
+
+      <div class="achievements-grid">
+
+        <!-- ===== #1 VÔ ĐỊCH ===== -->
+        <div class="achievement-card" data-tier="champion">
+          <span class="card-number">#01</span>
+          <div class="card-header">
+            <span class="card-rank-icon">🏆</span>
+            <div>
+              <span class="card-rank-badge badge-champion">Vô Địch</span>
+              <h3 class="card-title">Kỳ thi Olympic Miền Trung & Tây Nguyên – Bảng AI</h3>
+            </div>
+          </div>
+          <p class="card-desc">Đứng đầu bảng xếp hạng Trí tuệ Nhân tạo tại kỳ thi Olympic khu vực Miền Trung & Tây Nguyên.</p>
+          <span class="card-year">2025</span>
+        </div>
+
+        <!-- ===== #2 GIẢI NHẤT ===== -->
+        <div class="achievement-card" data-tier="champion">
+          <span class="card-number">#02</span>
+          <div class="card-header">
+            <span class="card-rank-icon">🥇</span>
+            <div>
+              <span class="card-rank-badge badge-champion">Giải Nhất</span>
+              <h3 class="card-title">Hội thi Tin học trẻ tỉnh Bình Định – Bảng D3</h3>
+            </div>
+          </div>
+          <p class="card-desc">Giành giải cao nhất tại Hội thi Tin học trẻ cấp tỉnh Bình Định, bảng D3.</p>
+          <span class="card-year">2025</span>
+        </div>
+
+        <!-- ===== #3 TOP 1 TỈNH ===== -->
+        <div class="achievement-card" data-tier="champion">
+          <span class="card-number">#03</span>
+          <div class="card-header">
+            <span class="card-rank-icon">🏆</span>
+            <div>
+              <span class="card-rank-badge badge-champion">Top 1 Tỉnh</span>
+              <h3 class="card-title">VOAI 2026 – Vòng Sơ Loại (Top 1 tỉnh Gia Lai)</h3>
+            </div>
+          </div>
+          <p class="card-desc">Xếp hạng 1 toàn tỉnh Gia Lai tại vòng sơ loại kỳ thi Vietnam Olympiad in Artificial Intelligence (VOAI) 2026.</p>
+          <span class="card-year">2026</span>
+        </div>
+
+        <!-- ===== #4 GIẢI NHÌ VOAI ===== -->
+        <div class="achievement-card" data-tier="silver">
+          <span class="card-number">#04</span>
+          <div class="card-header">
+            <span class="card-rank-icon">🥈</span>
+            <div>
+              <span class="card-rank-badge badge-silver">Giải Nhì</span>
+              <h3 class="card-title">VOAI – Vietnam Olympiad in Artificial Intelligence</h3>
+            </div>
+          </div>
+          <p class="card-desc">Đạt giải Nhì tại kỳ thi Olympic Trí tuệ Nhân tạo Việt Nam (VOAI) quy mô toàn quốc.</p>
+          <span class="card-year">2025</span>
+        </div>
+
+        <!-- ===== #5 HCB VAIC ===== -->
+        <div class="achievement-card" data-tier="silver">
+          <span class="card-number">#05</span>
+          <div class="card-header">
+            <span class="card-rank-icon">🥈</span>
+            <div>
+              <span class="card-rank-badge badge-silver">Huy chương Bạc</span>
+              <h3 class="card-title">VAIC – Vietnam AI Championship</h3>
+            </div>
+          </div>
+          <p class="card-desc">Giành Huy chương Bạc tại Giải vô địch Trí tuệ Nhân tạo Việt Nam (VAIC).</p>
+          <span class="card-year">2025</span>
+        </div>
+
+        <!-- ===== #6 Á QUÂN ===== -->
+        <div class="achievement-card" data-tier="silver">
+          <span class="card-number">#06</span>
+          <div class="card-header">
+            <span class="card-rank-icon">🥈</span>
+            <div>
+              <span class="card-rank-badge badge-silver">Á Quân</span>
+              <h3 class="card-title">Vietnam AI Contest – Mùa 3</h3>
+            </div>
+          </div>
+          <p class="card-desc">Vị trí Á quân (Runner-up) tại cuộc thi Vietnam AI Contest Season 3.</p>
+          <span class="card-year">2026</span>
+        </div>
+
+        <!-- ===== #7 TOP 3 ZAIC ===== -->
+        <div class="achievement-card" data-tier="bronze">
+          <span class="card-number">#07</span>
+          <div class="card-header">
+            <span class="card-rank-icon">🏅</span>
+            <div>
+              <span class="card-rank-badge badge-bronze">Top 3 Toàn Quốc</span>
+              <h3 class="card-title">Zalo AI Challenge (ZAIC) – Task AeroEyes</h3>
+            </div>
+          </div>
+          <p class="card-desc">Lọt vào Top 3 trong tổng số hơn 1000 đội thi tại cuộc thi Zalo AI Challenge – bài toán nhận diện vật thể từ ảnh hàng không (AeroEyes).</p>
+          <span class="card-year">2025</span>
+        </div>
+
+        <!-- ===== #8 HCĐ OLP CHUYÊN TIN ===== -->
+        <div class="achievement-card" data-tier="bronze">
+          <span class="card-number">#08</span>
+          <div class="card-header">
+            <span class="card-rank-icon">🥉</span>
+            <div>
+              <span class="card-rank-badge badge-bronze">Huy chương Đồng</span>
+              <h3 class="card-title">Olympic Miền Trung & Tây Nguyên – Bảng Chuyên Tin</h3>
+            </div>
+          </div>
+          <p class="card-desc">Đạt Huy chương Đồng bảng Chuyên Tin tại kỳ thi Olympic khu vực Miền Trung & Tây Nguyên.</p>
+          <span class="card-year">2025</span>
+        </div>
+
+        <!-- ===== #9 GIẢI BA KHKT ===== -->
+        <div class="achievement-card" data-tier="bronze">
+          <span class="card-number">#09</span>
+          <div class="card-header">
+            <span class="card-rank-icon">🥉</span>
+            <div>
+              <span class="card-rank-badge badge-bronze">Giải Ba</span>
+              <h3 class="card-title">Hội thi Khoa học Kỹ thuật tỉnh Gia Lai – Dự án AI Toán học</h3>
+            </div>
+          </div>
+          <p class="card-desc">Đạt giải Ba tại Hội thi Khoa học Kỹ thuật cấp tỉnh Gia Lai với dự án ứng dụng Trí tuệ Nhân tạo trong lĩnh vực Toán học.</p>
+          <span class="card-year">2026</span>
+        </div>
+
+        <!-- ===== #10 GIẢI BA THT GIA LAI ===== -->
+        <div class="achievement-card" data-tier="bronze">
+          <span class="card-number">#10</span>
+          <div class="card-header">
+            <span class="card-rank-icon">🥉</span>
+            <div>
+              <span class="card-rank-badge badge-bronze">Giải Ba</span>
+              <h3 class="card-title">Hội thi Tin học trẻ tỉnh Gia Lai – Bảng D3</h3>
+            </div>
+          </div>
+          <p class="card-desc">Đạt giải Ba tại Hội thi Tin học trẻ cấp tỉnh Gia Lai, bảng D3.</p>
+          <span class="card-year">2026</span>
+        </div>
+
+        <!-- ===== #11 GIẢI BA TOFAS ===== -->
+        <div class="achievement-card" data-tier="bronze">
+          <span class="card-number">#11</span>
+          <div class="card-header">
+            <span class="card-rank-icon">🥉</span>
+            <div>
+              <span class="card-rank-badge badge-bronze">Giải Ba</span>
+              <h3 class="card-title">Cuộc thi Lập Trình Quốc Tế TOFAS</h3>
+            </div>
+          </div>
+          <p class="card-desc">Đạt giải Ba tại cuộc thi Lập trình Quốc tế TOFAS (Test of Fundamental Academic Skills) – một sân chơi quy mô quốc tế.</p>
+          <span class="card-year">2026</span>
+        </div>
+
+        <!-- ===== #12 KHUYẾN KHÍCH HUE-ICT ===== -->
+        <div class="achievement-card" data-tier="merit">
+          <span class="card-number">#12</span>
+          <div class="card-header">
+            <span class="card-rank-icon">⭐</span>
+            <div>
+              <span class="card-rank-badge badge-merit">Khuyến Khích</span>
+              <h3 class="card-title">Hue-ICT – Bảng PRO-CHALLENGE</h3>
+            </div>
+          </div>
+          <p class="card-desc">Đạt giải Khuyến Khích bảng PRO-CHALLENGE tại cuộc thi Hue-ICT, cuộc thi CNTT uy tín khu vực Miền Trung.</p>
+          <span class="card-year">2025</span>
+        </div>
+
+        <!-- ===== #13 KHUYẾN KHÍCH OLP AI 2026 ===== -->
+        <div class="achievement-card" data-tier="merit">
+          <span class="card-number">#13</span>
+          <div class="card-header">
+            <span class="card-rank-icon">⭐</span>
+            <div>
+              <span class="card-rank-badge badge-merit">Khuyến Khích</span>
+              <h3 class="card-title">Olympic Miền Trung & Tây Nguyên – Bảng AI</h3>
+            </div>
+          </div>
+          <p class="card-desc">Đạt giải Khuyến Khích bảng Trí tuệ Nhân tạo (AI) tại kỳ thi Olympic khu vực Miền Trung & Tây Nguyên.</p>
+          <span class="card-year">2026</span>
+        </div>
+
+        <!-- ===== #14 KHUYẾN KHÍCH STTTN&NĐ ===== -->
+        <div class="achievement-card" data-tier="merit">
+          <span class="card-number">#14</span>
+          <div class="card-header">
+            <span class="card-rank-icon">⭐</span>
+            <div>
+              <span class="card-rank-badge badge-merit">Khuyến Khích</span>
+              <h3 class="card-title">Cuộc thi Sáng tạo Thanh thiếu niên, Nhi đồng cấp Tỉnh</h3>
+            </div>
+          </div>
+          <p class="card-desc">Đạt giải Khuyến Khích tại Cuộc thi Sáng tạo Thanh thiếu niên và Nhi đồng (STTTN&NĐ) cấp tỉnh.</p>
+          <span class="card-year">2024</span>
+        </div>
+
+      </div><!-- /.achievements-grid -->
+    </div>
+  </section>
+
+  <!-- ======================== CONTACT ======================== -->
+  <section class="section contact" id="contact">
+    <div class="container">
+      <div class="section-header reveal">
+        <div class="section-label">Kết Nối</div>
+        <h2 class="section-title">Liên Hệ <span class="glow">Với Mình</span></h2>
+        <p class="section-subtitle">Sẵn sàng kết nối, hợp tác và chia sẻ về AI & Công nghệ</p>
+      </div>
+      <div class="contact-grid">
+
+        <!-- Email -->
+        <a href="mailto:nhubach.tik25@gmail.com" class="contact-card reveal">
+          <div class="contact-icon">
+            <svg viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z" fill="none" stroke="currentColor" stroke-width="1.5"/><polyline points="22,6 12,13 2,6" fill="none" stroke="currentColor" stroke-width="1.5"/></svg>
+          </div>
+          <div class="contact-info">
+            <h4>Email</h4>
+            <p>nhubach.tik25@gmail.com</p>
+          </div>
+        </a>
+
+        <!-- Phone -->
+        <a href="tel:0916947239" class="contact-card reveal">
+          <div class="contact-icon">
+            <svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z" fill="none" stroke="currentColor" stroke-width="1.5"/></svg>
+          </div>
+          <div class="contact-info">
+            <h4>Điện thoại</h4>
+            <p>0916 947 239</p>
+          </div>
+        </a>
+
+        <!-- Facebook -->
+        <a href="https://www.facebook.com/phung.nguyen.nhu.bach" target="_blank" class="contact-card reveal">
+          <div class="contact-icon">
+            <svg viewBox="0 0 24 24"><path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"/></svg>
+          </div>
+          <div class="contact-info">
+            <h4>Facebook</h4>
+            <p>Phùng Nguyễn Như Bách</p>
+          </div>
+        </a>
+
+        <!-- GitHub -->
+        <a href="https://github.com/NhwBachTik25" target="_blank" class="contact-card reveal">
+          <div class="contact-icon">
+            <svg viewBox="0 0 24 24"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
+          </div>
+          <div class="contact-info">
+            <h4>GitHub</h4>
+            <p>NhwBachTik25</p>
+          </div>
+        </a>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ======================== FOOTER ======================== -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-brand">PINKBYTE</div>
+      <p>&copy; 2024 – 2026 Phùng Nguyễn Như Bách. Crafted with 💖 & AI.</p>
+      <div class="footer-socials">
+        <a href="https://www.facebook.com/phung.nguyen.nhu.bach" target="_blank" title="Facebook">
+          <svg viewBox="0 0 24 24"><path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"/></svg>
+        </a>
+        <a href="https://github.com/NhwBachTik25" target="_blank" title="GitHub">
+          <svg viewBox="0 0 24 24"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
+        </a>
+        <a href="mailto:nhubach.tik25@gmail.com" title="Email">
+          <svg viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z" fill="none" stroke="currentColor" stroke-width="1.5"/><polyline points="22,6 12,13 2,6" fill="none" stroke="currentColor" stroke-width="1.5"/></svg>
+        </a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ======================== SCROLL TO TOP ======================== -->
+  <button class="scroll-top" id="scrollTopBtn" aria-label="Về đầu trang">
+    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="18 15 12 9 6 15"/></svg>
+  </button>
+
+  <!-- ======================== JAVASCRIPT ======================== -->
+  <script>
+    /* ================================================================
+       1. PARTICLE CANVAS BACKGROUND
+       ================================================================ */
+    (function initCanvas() {
+      const canvas = document.getElementById('bg-canvas');
+      const ctx = canvas.getContext('2d');
+      let w, h, particles = [];
+      const PARTICLE_COUNT = 70;
+      const COLORS = [
+        'rgba(226,40,126,0.4)',
+        'rgba(255,215,0,0.3)',
+        'rgba(255,136,0,0.3)',
+        'rgba(0,229,255,0.25)',
+        'rgba(240,230,255,0.12)'
+      ];
+
+      function resize() {
+        w = canvas.width = window.innerWidth;
+        h = canvas.height = window.innerHeight;
+      }
+
+      function createParticles() {
+        particles = [];
+        for (let i = 0; i < PARTICLE_COUNT; i++) {
+          particles.push({
+            x: Math.random() * w,
+            y: Math.random() * h,
+            vx: (Math.random() - 0.5) * 0.4,
+            vy: (Math.random() - 0.5) * 0.4,
+            r: Math.random() * 2 + 0.5,
+            color: COLORS[Math.floor(Math.random() * COLORS.length)]
+          });
+        }
+      }
+
+      function draw() {
+        ctx.clearRect(0, 0, w, h);
+        for (const p of particles) {
+          ctx.beginPath();
+          ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
+          ctx.fillStyle = p.color;
+          ctx.fill();
+          p.x += p.vx;
+          p.y += p.vy;
+          if (p.x < 0 || p.x > w) p.vx *= -1;
+          if (p.y < 0 || p.y > h) p.vy *= -1;
+        }
+        for (let i = 0; i < particles.length; i++) {
+          for (let j = i + 1; j < particles.length; j++) {
+            const dx = particles[i].x - particles[j].x;
+            const dy = particles[i].y - particles[j].y;
+            const dist = Math.sqrt(dx * dx + dy * dy);
+            if (dist < 150) {
+              ctx.beginPath();
+              ctx.moveTo(particles[i].x, particles[i].y);
+              ctx.lineTo(particles[j].x, particles[j].y);
+              ctx.strokeStyle = `rgba(226,40,126,${0.08 * (1 - dist / 150)})`;
+              ctx.lineWidth = 0.5;
+              ctx.stroke();
+            }
+          }
+        }
+        requestAnimationFrame(draw);
+      }
+
+      window.addEventListener('resize', () => { resize(); createParticles(); });
+      resize();
+      createParticles();
+      draw();
+    })();
+
+    /* ================================================================
+       2. NAVBAR SCROLL & MOBILE TOGGLE
+       ================================================================ */
+    const navbar = document.getElementById('navbar');
+    const navToggle = document.getElementById('navToggle');
+    const navLinks = document.getElementById('navLinks');
+
+    window.addEventListener('scroll', () => {
+      navbar.classList.toggle('scrolled', window.scrollY > 60);
+    });
+
+    navToggle.addEventListener('click', () => {
+      navToggle.classList.toggle('open');
+      navLinks.classList.toggle('active');
+    });
+
+    navLinks.querySelectorAll('a').forEach(link => {
+      link.addEventListener('click', () => {
+        navToggle.classList.remove('open');
+        navLinks.classList.remove('active');
+      });
+    });
+
+    // Active nav link on scroll
+    const sections = document.querySelectorAll('section[id]');
+    window.addEventListener('scroll', () => {
+      const scrollY = window.scrollY + 200;
+      sections.forEach(sec => {
+        const top = sec.offsetTop;
+        const height = sec.offsetHeight;
+        const id = sec.getAttribute('id');
+        const link = navLinks.querySelector(`a[href="#${id}"]`);
+        if (link) {
+          if (scrollY >= top && scrollY < top + height) {
+            navLinks.querySelectorAll('a').forEach(a => a.classList.remove('active'));
+            link.classList.add('active');
+          }
+        }
+      });
+    });
+
+    /* ================================================================
+       3. SCROLL REVEAL ANIMATIONS
+       ================================================================ */
+    const revealEls = document.querySelectorAll('.reveal, .achievement-card');
+
+    const revealObserver = new IntersectionObserver((entries) => {
+      entries.forEach((entry, index) => {
+        if (entry.isIntersecting) {
+          // Stagger animation for achievement cards
+          if (entry.target.classList.contains('achievement-card')) {
+            const cards = [...document.querySelectorAll('.achievement-card')];
+            const i = cards.indexOf(entry.target);
+            setTimeout(() => {
+              entry.target.classList.add('visible');
+            }, (i % 3) * 100); // stagger by column
+          } else {
+            entry.target.classList.add('visible');
+          }
+        }
+      });
+    }, { threshold: 0.1, rootMargin: '0px 0px -30px 0px' });
+
+    revealEls.forEach(el => revealObserver.observe(el));
+
+    /* ================================================================
+       4. COUNTER ANIMATION (Stats)
+       ================================================================ */
+    const counters = document.querySelectorAll('.stat-number[data-target]');
+
+    const counterObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          const el = entry.target;
+          const target = parseInt(el.dataset.target);
+          let current = 0;
+          const step = Math.max(1, Math.floor(target / 40));
+          const interval = setInterval(() => {
+            current += step;
+            if (current >= target) {
+              current = target;
+              clearInterval(interval);
+            }
+            el.textContent = current;
+          }, 40);
+          counterObserver.unobserve(el);
+        }
+      });
+    }, { threshold: 0.5 });
+
+    counters.forEach(c => counterObserver.observe(c));
+
+    /* ================================================================
+       5. SKILL METER ANIMATION
+       ================================================================ */
+    const meterFills = document.querySelectorAll('.meter-fill');
+
+    const meterObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.style.width = entry.target.dataset.width + '%';
+          meterObserver.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.3 });
+
+    meterFills.forEach(m => meterObserver.observe(m));
+
+    /* ================================================================
+       6. CARD GLOW FOLLOW MOUSE
+       ================================================================ */
+    document.querySelectorAll('.achievement-card').forEach(card => {
+      card.addEventListener('mousemove', (e) => {
+        const rect = card.getBoundingClientRect();
+        const x = ((e.clientX - rect.left) / rect.width) * 100;
+        const y = ((e.clientY - rect.top) / rect.height) * 100;
+        card.style.setProperty('--mx', x + '%');
+        card.style.setProperty('--my', y + '%');
+      });
+    });
+
+    /* ================================================================
+       7. ACHIEVEMENT FILTER (Trophy Tiers)
+       ================================================================ */
+    const filterBtns = document.querySelectorAll('.trophy-filter');
+    const achievementCards = document.querySelectorAll('.achievement-card');
+
+    filterBtns.forEach(btn => {
+      btn.addEventListener('click', () => {
+        // Update active button
+        filterBtns.forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+
+        const filter = btn.dataset.filter;
+
+        achievementCards.forEach(card => {
+          if (filter === 'all' || card.dataset.tier === filter) {
+            card.style.display = '';
+            // Re-trigger animation
+            card.classList.remove('visible');
+            requestAnimationFrame(() => {
+              requestAnimationFrame(() => {
+                card.classList.add('visible');
+              });
+            });
+          } else {
+            card.style.display = 'none';
+          }
+        });
+      });
+    });
+
+    /* ================================================================
+       8. SCROLL TO TOP BUTTON
+       ================================================================ */
+    const scrollTopBtn = document.getElementById('scrollTopBtn');
+
+    window.addEventListener('scroll', () => {
+      scrollTopBtn.classList.toggle('visible', window.scrollY > 500);
+    });
+
+    scrollTopBtn.addEventListener('click', () => {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+
+    /* ================================================================
+       9. SMOOTH SCROLL FOR ANCHORS
+       ================================================================ */
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function (e) {
+        const target = document.querySelector(this.getAttribute('href'));
+        if (target) {
+          e.preventDefault();
+          target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+      });
+    });
+  </script>
+
+</body>
+</html>
