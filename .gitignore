@@ -1,0 +1,12 @@
+# Backups & Raw files
+avatar_raw.jpg
+*.tmp
+*.log
+*.csv
+scripts/
+
+# OS & Editor
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
