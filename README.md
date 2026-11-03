@@ -6,7 +6,7 @@
 
 > Sinh viên ngành Sư phạm Tin học K49A — Trường Đại học Quy Nhơn (Cựu học sinh THPT Chuyên Lê Quý Đôn Gia Lai).  
 > **Founder PrimeHub** — Sáng kiến EdTech số hóa phòng thực hành STEM & Kỹ thuật bằng AR/VR & AI.  
-> Sở hữu **20 giải thưởng** học thuật, Olympic Trí tuệ Nhân tạo, Lập trình thi đấu và Nghiên cứu KHKT cấp Quốc Gia, Khu Vực & Tỉnh.
+> Sở hữu **21 giải thưởng** học thuật, Olympic Trí tuệ Nhân tạo, Lập trình thi đấu và Nghiên cứu KHKT cấp Quốc Gia, Khu Vực & Tỉnh.
 
 ---
 
@@ -17,6 +17,7 @@
 - 🥇 **HCV / Top 1 Tỉnh (Vòng sơ loại)**: Kỳ thi Olympic Trí tuệ Nhân tạo Việt Nam (VOAI 2026).
 - 🥈 **HCB / Giải Nhì Quốc Gia**: Vietnam Olympiad in Artificial Intelligence (VOAI 2025).
 - 🥈 **HCB / Á Quân**: Vietnam AI Championship (VAIC 2025) & Vietnam AI Contest Mùa 3.
+- 🥈 **HCB / Giải Nhì (Top 2)**: OlpAI'26 Miền Trung (Đội QNU.BaKhiNhaVua — ĐH Quy Nhơn).
 - 🥉 **Top 3 Toàn Quốc**: Zalo AI Challenge 2025 — Task AeroEyes (Hơn 1.000 đội thi đấu).
 - 🥉 **Giải Ba**: ICPC Miền Trung 2026 (Đội QNU.Prime — ĐH Quy Nhơn).
 
